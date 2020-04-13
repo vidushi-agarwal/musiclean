@@ -12,9 +12,9 @@ def index(request):
             lyrics.save()
             song_title = lyrics.cleaned_data.get("song_title")
             artist=lyrics.cleaned_data.get("artist")
-            selection = lyrics.cleaned_data.get("selection")
+            # selection = lyrics.cleaned_data.get("selection")
             lyric_class(artist,song_title).get_lyrics()
-            return render(request,'handclean_app/index1.html',{'song_title':song_title,'artist':artist,'selection':selection})
+            return render(request,'handclean_app/index1.html',{'song_title':song_title,'artist':artist})
             
 
     else:
