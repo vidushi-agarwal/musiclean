@@ -1,0 +1,11 @@
+.vscode
+**/*.pyc
+**/migrations/**
+.cache
+.DS_store
+.ipynb_checkpoints
+db.sqlite3
+
+
+# Python pycache:
+__pycache__/

@@ -1,0 +1,1 @@
+web: gunicorn handclean.wsgi --log-file -
