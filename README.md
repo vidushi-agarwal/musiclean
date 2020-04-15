@@ -11,7 +11,7 @@ Want to Get Beyond 'Happy Birthday'? This tool will turn any Song into your hand
 <br>
 Make sure to Review Us and tell us your handwashing jingle🎵.
 
-## How I built it
+## How I built it?
 The web app is built on `Django`, a python framework. Apart from all the miscellaneous backend activities, there is a script written in python which uses `Pillow` library and `musicmatch` API. For unicodes decoding, it uses library called `raqm`. In short, user sends the query which request the Django App which further requests musixmatch API, the response, in the form of lyrics, is then send to Django App and finally it is edited on the template picture.This response in the form of '.png' file is sent to the user.
 
 ## How do I use this directory?
