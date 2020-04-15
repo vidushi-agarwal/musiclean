@@ -4,7 +4,7 @@
 <!-- ghghghggghg -->
 {% block content %}
 <link rel="stylesheet" href='{% static "handclean_app/css/my_crispy.css" %}' />
-<div>
+<div style="margin-top: 2rem;">
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %} {% crispy lyrics lyrics.helper %}
   </form>

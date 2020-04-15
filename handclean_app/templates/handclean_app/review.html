@@ -110,11 +110,36 @@
           </div>
         </div>
         <div class="col-md-4" >
+          <div style="margin-top: 2rem;">
+               {% if messages%}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" >
+                  {{message}}
+                </div>
+                {%endfor%}
+
+              {% endif %}
           <form method="post" enctype="multipart/form-data" >
             {% csrf_token %} {% crispy review review.helper %}
           </form>
         </div>
       </div>
+      </div>
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">Thanks for visiting❤️</p>
+        <ul class ="list-inline">
+          <li class="list-inline-item">
+            <a href="https://github.com/vidushi-agarwal/musiclean">
+              <i class="social-icons fa fa-github"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="https://www.linkedin.com/in/vidushi-agarwal">
+              <i class="social-icons fa fa-linkedin"></i>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

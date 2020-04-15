@@ -13,6 +13,6 @@ class ReviewModel(models.Model):
     jingle=models.CharField(max_length=255)
     myreview = models.TextField(max_length=1000,blank=True)
     picture = models.ImageField(upload_to='posters_review')
-    date_posted=models.DateField(default=timezone.now())
+    date_posted=models.DateField(default=timezone.now)
     def __str__(self):
         return self.jingle

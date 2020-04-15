@@ -28,7 +28,8 @@ class LyricModelForm(forms.ModelForm):
 class ReviewModelForm(forms.ModelForm):
     class Meta:
         model = ReviewModel
-        fields = {'jingle', 'myreview','picture'}
+        fields = {'jingle', 'myreview', 'picture'}
+        ordering = ('-date_posted')
     def __init__(self, *args, **kwargs):
         super(ReviewModelForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()

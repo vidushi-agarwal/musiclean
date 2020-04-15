@@ -33,8 +33,12 @@ def review(request):
         pr_form = ReviewModelForm(request.POST,request.FILES)
         if pr_form.is_valid():
             pr_form.save()
+            messages.success(request, 'Thanks for your review!')
             pr_form=ReviewModelForm()
-    review_done=ReviewModel.objects.all()
+    review_done = ReviewModel.objects.all().order_by('-date_posted')
+    print(review_done)
+    review_done1 = ReviewModel.objects.all().order_by('-date_posted').reverse()
+    print(review_done1)
     return render(request, 'handclean_app/review.html', {'review': pr_form,'review_done':review_done})
 
 
