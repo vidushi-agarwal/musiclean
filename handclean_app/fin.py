@@ -38,34 +38,35 @@ class lyric_class:
 
     def img_wrt(self, text_arr, song_title, artist):
         font_hin = ImageFont.truetype(settings.BASE_DIR + '/handclean_app/static/handclean_app/fonts/Gargi.ttf',12) #absolute path
+        font_eng_bd=ImageFont.truetype(settings.BASE_DIR + '/handclean_app/static/handclean_app/fonts/DejaVuSans-Bold.ttf',10) #absolute path
+        font_eng_bd_title=ImageFont.truetype(settings.BASE_DIR + '/handclean_app/static/handclean_app/fonts/DejaVuSans-Bold.ttf',25) #absolute path
         font_eng=ImageFont.truetype(settings.BASE_DIR + '/handclean_app/static/handclean_app/fonts/DejaVuSans.ttf',12) #absolute path
-        font_eng_bd=ImageFont.truetype(settings.BASE_DIR + '/handclean_app/static/handclean_app/fonts/DejaVuSans-Bold.ttf',36) #absolute path
         text_hin = "नित्य"
-        source_img = Image.open(settings.BASE_DIR + '/handclean_app/static/handclean_app/images/handrub.png') #absolute path
+        source_img = Image.open(settings.BASE_DIR + '/handclean_app/static/handclean_app/images/handwash.png') #absolute path
         draw = ImageDraw.Draw(source_img)
-        x = 40
-        y = 440
+        x = 30
+        y = 320
         ctr = 0
-        box_x = 240
-        box_y = 50
+        box_x = 200
         line_height = font_eng.getsize('hg')[1]
-        for i in range(3):
+        for i in range(4):
             for j in range(3):
                 print(text_arr[ctr])
-                lines = self.text_wrap(text_arr[ctr], font_eng, box_x - 20)
+                lines = self.text_wrap(text_arr[ctr], font_eng, box_x - 10)
                 y1 = y
                 for line in lines:
                     draw.text((x, y1), line, fill=(0, 0, 0), font=font_eng)
                     y1 = y1 + line_height
                 x += box_x + 30
                 ctr += 1
-            x = 40
-            y = y + 260
-        y = 30
-        text = "Wash your hands with `" + self.song_title.title() + " from " + self.artist.title() + "'";
-        lines = self.text_wrap(text, font_eng_bd, box_x * 3 + 50)
+            x = 30
+            y = y + 170
+
+        y = 20
+        text = "Wash your hands with '" + self.song_title.title() + "'";
+        lines = self.text_wrap(text, font_eng_bd_title, box_x * 2+50)
         for line in lines:
-            draw.text((x, y), line, fill=(0, 0, 0), font=font_eng_bd)
+            draw.text((x, y), line, fill=(0, 0, 0), font=font_eng_bd_title)
             y += line_height + 30
         source_img.save(settings.BASE_DIR + '/handclean_app/static/handclean_app/images/a.png') #absolute path
 
@@ -93,14 +94,17 @@ class lyric_class:
         with open(settings.BASE_DIR + '/handclean_app/static/handclean_app/myauth.json') as json_file:
             data = json.load(json_file)
             apikey = data["authkey"]
-            print(apikey)
         r=requests.get("https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track="+song_title+"&q_artist="+artist+"&apikey="+apikey)
         
         try:
-            # r is of type response
-            print(r)
-            packages_json=r.json() # converts into json  
-            text=packages_json['message']['body']['lyrics']['lyrics_body']
+            # r is of type response            
+            packages_json = r.json()  # converts into json  
+            if (packages_json['message']['header']['status_code'] == 404):
+                return packages_json['message']['header']['status_code']
+                       
+            text = packages_json['message']['body']['lyrics']['lyrics_body']
+                
+            
             str1=""
             text_arr=[]
             c=0
@@ -114,7 +118,7 @@ class lyric_class:
             		text_arr.append(str1)
             		str1=""
             		c+=1
-            	if(c==9):
+            	if(c==12):
             		break
             print(text_arr)
             self.img_wrt(text_arr,song_title,artist)

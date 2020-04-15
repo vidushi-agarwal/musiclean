@@ -8,7 +8,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+<style>
+  .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+</style>
+    
+    <!-- to create small top icon -->
+    <link rel="shortcut icon" href="{% static 'handclean_app/images/logo.ico' %}" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -18,29 +27,85 @@
     />
     <link rel="stylesheet" href='{% static "handclean_app/css/main.css" %}' />
 
-    <title>Hello, world!</title>
+    <title>Musi(c)lean</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h1>Wash Your Lyrics</h1>
-          <h4>
-            You have to wash your hands, I know the pain. To reduce it, we
-            compounded it with your fav music.
-          </h4>
-          <img
-            src='{% static "handclean_app/images/handrub.png" %}'
-            alt="Hi!"
-            width="90%"
-            height="90%"
-          />
+  <body style="font-size: 85%;letter-spacing: 0.3px; margin-bottom:5rem ;">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href={% url 'home' %}>Musiclean</a>
+    
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="{% url 'review' %}">Review Us</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+              <ul class="navbar-nav mr-auto">
+                <a class="nav-item nav-link" href="{% url 'gallery' %}">Gallery</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Popular Songs🎶🎵
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'coldplay' %}">Something just like this</a>
+                    <a class="dropdown-item" href="{% url 'despacito' %}">Despacito</a>
+                    <a class="dropdown-item" href="#">Itni shakti hame dena data</a> 
+                    <a class="dropdown-item" href="{% url 'ringa' %}">Ringa Ringa Roses</a>
+                    <a class="dropdown-item" href="{% url 'johny' %}">Johny Johny</a>
+                  </div>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6">
-          {% block content %} {% endblock %}
+      </nav>
+    </header>
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p style="text-align: center;font-size:250%; "> Musiclean </p>
+          <img
+      src="{% static 'handclean_app/images/namaste.jpg' %}"
+      alt="Hi!"
+      class="center"
+      width="20%;"
+    />
+    <br>
+    <p style="text-align: center;">We all are in this together😷.</p>
+          <p style="text-align: justify;">
+            
+            Some experts suggested that one can sing 'Happy Birthday' twice while washing hands for 30s. 
+            Want to Get Beyond 'Happy Birthday'? This tool will turn any Song into your handwashing jingle🎶🎵. From kids to grannies, this tool serves everyone everything from rhymes to hymns.
+      <br>Directions: Print and stick your jingle near washbasin. Use 🧼 and water, and wash hands🧴👏  for at least 40-60 seconds (As per:WHO) 
+          <br>
+            Make sure to <a  href="#"> Review Us </a> and tell us your handwashing jingle🎵.
+          </p>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="container">
+            {% if messages%}
+      {% for message in messages %}
+      <div class="alert alert-{{message.tags}}" style="
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;">
+        {{message}}
+      </div>
+      {%endfor%}
+
+      {% endif %}
+          {% block content %} 
+          {% endblock %}
+        </div>
         </div>
       </div>
-    </div>
+    </main>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

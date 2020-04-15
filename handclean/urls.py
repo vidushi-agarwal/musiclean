@@ -18,7 +18,8 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('handclean_app.urls'))
+    path('', include('handclean_app.urls')),
+    
 ]
 
 #media staticfiles
