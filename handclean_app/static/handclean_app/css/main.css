@@ -33,13 +33,12 @@ ul {
   font-weight: 500;
 }
 nav {
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #6c757d !important;
 }
 
 .content-section {
-  background: rgba(0, 0, 0, 0.87);
   padding: 10px 20px;
-  border: 1px solid #fff;
+  border: 1px solid #6c757d !important;
   border-radius: 3px;
   margin-bottom: 20px;
 }
@@ -66,7 +65,7 @@ a.article-title:hover {
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #6c757d !important;
 }
 
 .article-metadata a:hover {

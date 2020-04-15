@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse
-from .forms import LyricModelForm
+from .forms import LyricModelForm,ReviewModelForm
 from .fin import lyric_class
-from .models import LyricModel
+from .models import LyricModel,ReviewModel
 
 
 # Create your views here.
@@ -26,6 +26,17 @@ def index(request):
     else:
         lyrics = LyricModelForm()
     return render(request, 'handclean_app/index.html', {'lyrics': lyrics})
+
+def review(request):
+    pr_form =ReviewModelForm()
+    if request.method == 'POST':
+        pr_form = ReviewModelForm(request.POST,request.FILES)
+        if pr_form.is_valid():
+            pr_form.save()
+            pr_form=ReviewModelForm()
+    review_done=ReviewModel.objects.all()
+    return render(request, 'handclean_app/review.html', {'review': pr_form,'review_done':review_done})
+
 
 def comingsoon(request):
     return render(request,'handclean_app/comingsoon.html',{})

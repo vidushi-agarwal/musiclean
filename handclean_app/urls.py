@@ -9,6 +9,6 @@ urlpatterns = [
     path('coldplay/', views.coldplay, name='coldplay'),
     path('despacito/', views.despacito, name='despacito'),
     path('gallery/', views.comingsoon, name="gallery"),
-    path('review/',views.comingsoon, name="review")
+    path('review/',views.review, name="review")
     
 ]

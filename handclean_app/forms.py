@@ -1,5 +1,5 @@
 from django import forms
-from .models import LyricModel
+from .models import LyricModel,ReviewModel
 
 #edit crispy tags
 from crispy_forms.helper import FormHelper
@@ -8,12 +8,6 @@ from crispy_forms.bootstrap import *
 
 # This is a model form- this is created using model
 class LyricModelForm(forms.ModelForm):
-    # choice = [
-    #     ("song_value", "song"),
-    #     ("custom_value","custom")
-    # ]
-    # selection = forms.ChoiceField(choices=choice, widget=forms.RadioSelect)
-    
     class Meta:
         model = LyricModel
         fields = {'song_title', 'artist'}
@@ -28,5 +22,22 @@ class LyricModelForm(forms.ModelForm):
             ),
             ButtonHolder(
                 Submit('submit', 'Create Poster', css_class='btn btn-primary btn-block')
+            )
+        )
+
+class ReviewModelForm(forms.ModelForm):
+    class Meta:
+        model = ReviewModel
+        fields = {'jingle', 'myreview','picture'}
+    def __init__(self, *args, **kwargs):
+        super(ReviewModelForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                'Your review is important.',HTML("""
+            <p>Please write your 'go to jingle', you created using Musiclean,a small review and your musiclean best poster.</p>"""),'jingle','myreview', 'picture'
+            ),
+            ButtonHolder(
+                Submit('submit', 'Happy to help', css_class='btn btn-primary btn-block')
             )
         )
