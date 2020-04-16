@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.http import HttpResponse
 from .forms import LyricModelForm,ReviewModelForm
-from .fin import lyric_class
+from .fin_2 import lyric_class
 from .models import LyricModel,ReviewModel
 
 
