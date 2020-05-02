@@ -42,3 +42,4 @@ class ReviewModelForm(forms.ModelForm):
                 Submit('submit', 'Happy to help', css_class='btn btn-primary btn-block')
             )
         )
+

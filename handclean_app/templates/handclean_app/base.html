@@ -15,6 +15,21 @@
         margin-left: auto;
         margin-right: auto;
       }
+      nav {
+  border-bottom: 1px solid #6c757d !important;
+}
+
+.content-section {
+  padding: 10px 20px;
+  border: 1px solid #6c757d !important;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #6c757d !important;
+}
 </style>
     
     <!-- to create small top icon -->
@@ -31,7 +46,7 @@
 
     <title>Musi(c)lean</title>
   </head>
-  <body style="font-size: 85%;letter-spacing: 0.3px; margin-bottom:5rem ;">
+  <body  style="font-size: 85%;letter-spacing: 0.3px; margin-bottom:5rem ;">
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
@@ -53,11 +68,9 @@
                     Popular Songs🎶🎵
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'coldplay' %}">Something just like this</a>
-                    <a class="dropdown-item" href="{% url 'despacito' %}">Despacito</a>
-                    <a class="dropdown-item" href="#">Itni shakti hame dena data</a> 
-                    <a class="dropdown-item" href="{% url 'ringa' %}">Ringa Ringa Roses</a>
-                    <a class="dropdown-item" href="{% url 'johny' %}">Johny Johny</a>
+                    {% for key,value in nav_dict.items %}
+                    <a class="dropdown-item" href="{% url 'poster' value %}">{{key}}</a>
+                    {% endfor %}
                   </div>
                 </li>
                 
@@ -67,6 +80,7 @@
         </div>
       </nav>
     </header>
+    {% block maincontent %}
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8">
@@ -125,7 +139,6 @@
               <br>
                 Make sure to <a  href="{% url 'review' %}"> Review Us </a> and tell us your handwashing jingle🎵.
               </p>
-            
             </div>
           <div class="col-md-4">
             <div class="container">
@@ -147,7 +160,14 @@
         </div>
 
         <footer class="my-5 pt-5 text-muted text-center text-small">
-          <p class="mb-1">Thanks for visiting❤️</p>
+          
+         
+            
+         <p class="mb-1"><span style="font-size: x-large;"class="font-weight-light">Voilà🥳, <span id="count1"></span> posters onboard🔥</span></p>
+        
+             <p class="mb-1">
+          Thanks for visiting❤️
+        </p>
           <ul class ="list-inline">
             <li class="list-inline-item">
               <a href="https://github.com/vidushi-agarwal/musiclean">
@@ -163,8 +183,29 @@
         </footer>
 
     </main>
+    {%  endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        function counter(id, start, end, duration) {
+          let obj = document.getElementById(id),
+          current = start,
+          range = end - start,
+          increment = end > start ? 1 : -1,
+          step = Math.abs(Math.floor(duration / range)),
+          timer = setInterval(() => {
+            current += increment;
+            obj.textContent = current;
+            if (current == end) {
+            clearInterval(timer);
+            }
+          }, step);
+        }
+      counter("count1", 0, {{count}}, 3000);
+      });
+    </script>
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

@@ -1,8 +1,10 @@
 {% extends 'handclean_app/base.html' %}{% load static %}
 <!-- dkjdksjdskdk -->
+
+<!-- {% block counter %} {{count}} {% endblock %} -->
 {% block content %}
 <div style="margin-top: 2rem;">
-  {% if song_title %}
+  <!-- {{count}} -->
   <img
     src='{% static "handclean_app/images/a.png" %}'
     alt="Hi!"
@@ -25,8 +27,5 @@
       >Back</a
     >
   </div>
-  {% else %}
-  <p>hhjhj</p>
-  {% endif %}
 </div>
 {% endblock %}

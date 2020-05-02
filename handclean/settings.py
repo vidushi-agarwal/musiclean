@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dy4=84(ggz#g#d33uq#iwiec9am$4d$m5*&jm2f%iq517x01r9'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG')=="True")
 
 ALLOWED_HOSTS = ['musiclean.herokuapp.com']
 
@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['musiclean.herokuapp.com']
 INSTALLED_APPS = [
     'handclean_app.apps.HandcleanAppConfig',
     'crispy_forms',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,6 +105,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Cloudinary Config
+CLOUDINARY_URL="cloudinary://216762747948992:ZjAMLJdFyewub6cquX7ipRhriwQ@dlfssqpay"
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 

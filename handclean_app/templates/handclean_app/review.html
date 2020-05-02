@@ -1,87 +1,8 @@
+{% extends "handclean_app/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-<style>
-  .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      nav {
-  border-bottom: 1px solid #6c757d !important;
-}
 
-.content-section {
-  padding: 10px 20px;
-  border: 1px solid #6c757d !important;
-  border-radius: 3px;
-  margin-bottom: 20px;
-}
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #6c757d !important;
-}
-</style>
-    
-    <!-- to create small top icon -->
-    <link rel="shortcut icon" href="{% static 'handclean_app/images/logo.ico' %}" type="image/x-icon">
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href='{% static "handclean_app/css/main.css" %}' />
-
-    <title>Musi(c)lean</title>
-  </head>
-  <body style="font-size: 85%;letter-spacing: 0.3px; margin-bottom:5rem ;">
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand mr-4" href={% url 'home' %}>Musiclean</a>
-    
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="{% url 'review' %}">Review Us</a>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav">
-              <ul class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'gallery' %}">Gallery</a>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Popular Songs🎶🎵
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'coldplay' %}">Something just like this</a>
-                    <a class="dropdown-item" href="{% url 'despacito' %}">Despacito</a>
-                    <a class="dropdown-item" href="#">Itni shakti hame dena data</a> 
-                    <a class="dropdown-item" href="{% url 'ringa' %}">Ringa Ringa Roses</a>
-                    <a class="dropdown-item" href="{% url 'johny' %}">Johny Johny</a>
-                  </div>
-                </li>
-                
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </header>
+    {% block maincontent %}
     <main role="main" class="container">
     <div class ="row">
         <div class="col-md-8">
@@ -100,11 +21,9 @@
                   <p>{{ rev.myreview}}</p>
                 </div>
                 <div class="col-md-6">
-                  <img src={{ rev.picture.url }} class="center" width="30%"/>
+                  <img src={{ rev.char_pic }} class="center" width="30%"/>
                 </div>
               </div>
-              <!-- <p>{{ rev.myreview}}</p>
-              <img src={{ rev.picture.url }} width="10%"/> -->
             </div>
           </article>
           {% endfor %}
@@ -127,7 +46,8 @@
       </div>
       </div>
       <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">Thanks for visiting❤️</p>
+        <p class="mb-1">
+        Thanks for visiting❤️</p>
         <ul class ="list-inline">
           <li class="list-inline-item">
             <a href="https://github.com/vidushi-agarwal/musiclean">
@@ -142,22 +62,4 @@
         </ul>
       </footer>
     </main>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-</html>
+    {% endblock %}
