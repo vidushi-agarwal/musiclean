@@ -80,8 +80,9 @@
         </div>
       </nav>
     </header>
-    {% block maincontent %}
+    
     <main role="main" class="container">
+      {% block maincontent %}
         <div class="row">
             <div class="col-md-8">
               <p style="text-align: center;font-size:250%; "> Musiclean 
@@ -165,7 +166,7 @@
             </div>
           </div>
         </div>
-
+        {%  endblock %}
         <footer class="my-5 pt-5 text-muted text-center text-small">
           
          
@@ -190,7 +191,7 @@
         </footer>
 
     </main>
-    {%  endblock %}
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
