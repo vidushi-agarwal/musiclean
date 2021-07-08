@@ -20,6 +20,6 @@ The web app is built on `Django`, a python framework. Apart from all the miscell
 2. Clone the repo
 `git clone https://github.com/vidushi-agarwal/musiclean`
 3. Install all the packages
-`pip install requirements.txt`
+`pip install -r requirements.txt`
 4. Run the tool on localhost
 `python manage.py runserver`
