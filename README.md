@@ -23,3 +23,5 @@ The web app is built on `Django`, a python framework. Apart from all the miscell
 `pip install -r requirements.txt`
 4. Run the tool on localhost
 `python manage.py runserver`
+
+Till date there are over 1400 posters onboard
